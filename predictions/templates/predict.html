@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Consumo de Combustible</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Predicción de Consumo de Combustible</h1>
+        <form method="post" action="" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <label for="coemissions" class="block text-sm font-medium text-gray-700">CO Emissions</label>
+                <input type="text" id="coemissions" name="coemissions" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="engine_size" class="block text-sm font-medium text-gray-700">Engine Size</label>
+                <input type="text" id="engine_size" name="engine_size" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="cylinders" class="block text-sm font-medium text-gray-700">Cylinders</label>
+                <input type="text" id="cylinders" name="cylinders" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Predecir</button>
+            </div>
+        </form>
+        {% if prediction %}
+            <h2 class="mt-6 text-xl text-center">Predicción: {{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
